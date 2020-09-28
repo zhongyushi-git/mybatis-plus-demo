@@ -19,4 +19,6 @@ public interface UserService {
     Map<String, Object> userList();
 
     JSONObject userListByPage(Integer curr, Integer limit);
+
+
 }
