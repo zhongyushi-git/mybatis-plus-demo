@@ -16,6 +16,10 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    /**
+     * 查询所有的数据
+     * @return
+     */
     @GetMapping("/list")
     public JSONObject userList() {
         List<User> users = userService.selectList();
@@ -24,6 +28,11 @@ public class UserController {
         return json;
     }
 
+    /**
+     * 添加数据
+     * @param user
+     * @return
+     */
     @PostMapping("/")
     public String save(User user) {
         int count = userService.insert(user);
@@ -34,6 +43,11 @@ public class UserController {
         }
     }
 
+    /**
+     * 根据id删除数据
+     * @param id
+     * @return
+     */
     @DeleteMapping("/{id}")
     public String delete(@PathVariable("id") long id) {
         int count = userService.deleteById(id);
@@ -44,6 +58,11 @@ public class UserController {
         }
     }
 
+    /**
+     * 修改数据
+     * @param user
+     * @return
+     */
     @PutMapping("/")
     public String update(User user) {
         int count = userService.updateById(user);
@@ -54,14 +73,35 @@ public class UserController {
         }
     }
 
+    /**
+     * 模糊查询
+     * @return
+     */
     @GetMapping("/list2")
     public Map<String, Object> userList2() {
         return userService.userList();
     }
 
+    /**
+     * 单表分页查询
+     * @param curr
+     * @param limit
+     * @return
+     */
     @GetMapping("/list3")
     public JSONObject userList3(Integer curr, Integer limit) {
         return userService.userListByPage(curr, limit);
+    }
+
+    /**
+     * 单自定义表分页查询
+     * @param curr
+     * @param limit
+     * @return
+     */
+    @GetMapping("/list4")
+    public JSONObject userList4(Integer curr, Integer limit) {
+        return userService.userListByPage2(curr, limit);
     }
 
 }

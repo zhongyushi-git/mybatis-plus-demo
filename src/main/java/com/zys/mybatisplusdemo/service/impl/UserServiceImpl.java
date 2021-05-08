@@ -66,5 +66,16 @@ public class UserServiceImpl implements UserService {
         return jsonObject;
     }
 
+    @Override
+    public JSONObject userListByPage2(Integer curr, Integer limit) {
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        IPage<User> page = new Page<>(curr, limit);
+        IPage<User> user = userDao.selectPageList(page, queryWrapper);
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("data", user.getRecords());
+        jsonObject.put("total", user.getTotal());
+        return jsonObject;
+    }
+
 
 }

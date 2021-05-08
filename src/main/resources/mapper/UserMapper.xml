@@ -5,4 +5,7 @@
 <!--    <cache type="com.zys.mybatisplusdemo.config.MybatisPlusCache"/>-->
 
 
+    <select id="selectPageList" resultType="com.zys.mybatisplusdemo.entity.User">
+        select * from user ${ew.customSqlSegment}
+    </select>
 </mapper>

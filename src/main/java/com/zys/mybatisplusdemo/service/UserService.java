@@ -21,4 +21,5 @@ public interface UserService {
     JSONObject userListByPage(Integer curr, Integer limit);
 
 
+    JSONObject userListByPage2(Integer curr, Integer limit);
 }
